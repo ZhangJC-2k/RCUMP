@@ -1,1 +1,1 @@
-Our paper RCUMP has been accepted by TIP, code and models are coming soon.
+(pytorch) code for the paper: "RCUMP: Residual Completion Unrolling with Mixed Priors for Snapshot Compressive Imaging"
