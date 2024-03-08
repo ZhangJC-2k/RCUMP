@@ -1,1 +1,1 @@
-- **2024.02.25 :** Our paper RCUMP has been accepted by TIP, code and models are coming soon.
+Our paper RCUMP has been accepted by TIP, code and models are coming soon.
