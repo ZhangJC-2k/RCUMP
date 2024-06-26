@@ -6,7 +6,7 @@ Our work has been accepted by TIP, codes and results are coming soon (May or Jun
 ### Codes and Results
 The codes have been released and more details will be updated in a few days.
 
-The simulated and real results of RCUMP are available in [Baidu Disk](https://pan.baidu.com/s/18FBrgicFiXT1wOYr2ZZ7OQ?pwd=rcum).
+The simulated and real results of RCUMP are available [here](https://pan.baidu.com/s/18FBrgicFiXT1wOYr2ZZ7OQ?pwd=rcum).
 
 ### 1. Environment Requirements
 ```shell
