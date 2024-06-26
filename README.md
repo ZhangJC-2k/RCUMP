@@ -8,14 +8,14 @@ The codes have been released and more details will be updated in a few days.
 
 The simulated and real results of RCUMP are available in [Baidu Disk](https://pan.baidu.com/s/18FBrgicFiXT1wOYr2ZZ7OQ?pwd=rcum).
 
-#### Environment Requirements
+### 1. Environment Requirements
 ```shell
 Python>=3.6
 scipy
 numpy
 ```
 
-#### 2. Train:
+### 2. Train:
 
 Download the cave dataset of size 1024 from [MST](https://github.com/caiyuanhao1998/MST), put the dataset into the corresponding folder "RCUMP/CAVE_1024_28/" as the following form:
 
@@ -31,7 +31,7 @@ cd RCUMP
 python Train.py
 ```
 
-#### 3. Test:
+### 3. Test:
 
 Download the dataset from [TSA-Net](https://github.com/mengziyi64/TSA-Net), put the dataset into the corresponding folder "RCUMP/Test_data/" as the following form:
 
