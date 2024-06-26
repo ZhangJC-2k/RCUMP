@@ -35,7 +35,7 @@ python Train.py
 
 Download the test dataset from [TSA-Net](https://github.com/mengziyi64/TSA-Net), put the dataset into the corresponding folder "RCUMP/Test_data/" as the following form:
 
-	|--Datasets
+	|--Test_data
         |--scene01.mat
         |--scene02.mat
         ：
