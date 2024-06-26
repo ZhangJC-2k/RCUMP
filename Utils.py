@@ -41,13 +41,13 @@ def loadpath(pathlistfile):
     return pathlist
 
 def prepare_data(file_list, file_num):
-    HSI = np.zeros((((512, 512, 28, file_num))))
-    # HSI = np.zeros((((1024, 1024, 28, file_num))))
+    #HSI = np.zeros((((512, 512, 28, file_num))))  # for cave dataset of size 512
+    HSI = np.zeros((((1024, 1024, 28, file_num)))) # for cave dataset of size 1024
     for idx in range(file_num):
         path1 = file_list[idx]
         data = sio.loadmat(path1)
-        # HSI[:, :, :, idx] = data['img_expand'] / 65535.0
-        HSI[:, :, :, idx] = data['data_slice'] / 65535.0
+        #HSI[:, :, :, idx] = data['data_slice'] / 65535.0  # for cave dataset of size 512
+        HSI[:, :, :, idx] = data['img_expand'] / 65535.0   # for cave dataset of size 1024
     HSI[HSI < 0.] = 0.
     HSI[HSI > 1.] = 1.
     return HSI
