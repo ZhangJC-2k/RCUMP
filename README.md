@@ -47,3 +47,20 @@ cd RCUMP
 python Test.py
 ```
 Finally, run 'cal_psnr_ssim.m' in Matlab to get the performance metrics.
+
+### Citation
+If this repo helps you, please consider citing our work:
+
+
+```shell
+@ARTICLE{RCUMP,
+  author={Zhao, Yin-Ping and Zhang, Jiancheng and Chen, Yongyong and Wang, Zhen and Li, Xuelong},
+  journal={IEEE Transactions on Image Processing}, 
+  title={RCUMP: Residual Completion Unrolling With Mixed Priors for Snapshot Compressive Imaging}, 
+  year={2024},
+  volume={33},
+  number={},
+  pages={2347-2360},
+  keywords={Imaging;Image coding;Iterative methods;Optimization;Image reconstruction;Hyperspectral imaging;Artificial neural networks;Snapshot compressive imaging;hyperspectral image;deep unrolling-based methods},
+  doi={10.1109/TIP.2024.3374093}}
+```
