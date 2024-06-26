@@ -19,7 +19,7 @@ parser = argparse.ArgumentParser(description="PyTorch Spectral Compressive Imagi
 parser.add_argument('--data_path', default='./CAVE_1024_28/', type=str, help='Path of data')
 parser.add_argument('--mask_path', default='./mask_256_28.mat', type=str, help='Path of mask')
 parser.add_argument("--size", default=256, type=int, help='The training image size')
-parser.add_argument("--layernum", default=5, type=int, help='Net stage number')
+parser.add_argument("--layernum", default=9, type=int, help='Net stage number')
 parser.add_argument("--trainset_num", default=10, type=int, help='The number of training samples of each epoch')
 parser.add_argument("--testset_num", default=5, type=int, help='Total number of testset')
 parser.add_argument("--seed", default=42, type=int, help='Random_seed')
