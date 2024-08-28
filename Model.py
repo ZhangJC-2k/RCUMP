@@ -321,3 +321,5 @@ def shift(x, len_shift=2):
         x[:, i, :, :] = torch.roll(x[:, i, :, :], shifts=len_shift * i, dims=2)
     return x
 
+
+

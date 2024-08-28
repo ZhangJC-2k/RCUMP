@@ -46,3 +46,4 @@ if __name__ == "__main__":
         print("FLOPs=", str(flops.total() / (1024 * 1024 * 1024)) + '{}'.format("G"))
         print("params=", str(n_param / (1024 * 1024)) + '{}'.format("M"))
 
+

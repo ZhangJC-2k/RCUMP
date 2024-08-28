@@ -111,3 +111,4 @@ if __name__ == "__main__":
                 sio.savemat(save_path, {'label': lbl})
 
             print("model %d, test Avg PSNR = %.4f, train Avg PSNR = %.4f" % (epoch, psnr_total / (step + 1), checkpoint['psnr']))
+

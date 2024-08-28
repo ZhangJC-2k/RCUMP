@@ -3,6 +3,8 @@ import random
 import torch
 import numpy as np
 import scipy.io as sio
+from torchvision.transforms import Resize
+from torchvision.transforms import RandomRotation
 from Utils import *
 
 def arguement_1(x):
@@ -27,8 +29,8 @@ def arguement_1(x):
 
 def arguement_2(generate_gt):
     c, h, w = generate_gt.shape[1],256,256
-    divid_point_h = 128
-    divid_point_w = 128
+    divid_point_h = h//2
+    divid_point_w = w//2
     output_img = torch.zeros(c,h,w).cuda()
     output_img[:, :divid_point_h, :divid_point_w] = generate_gt[0]
     output_img[:, :divid_point_h, divid_point_w:] = generate_gt[1]
@@ -58,27 +60,35 @@ class dataset(tud.Dataset):
 
     def __getitem__(self, index):
         if self.isTrain:
-
-            arguement = random.randint(1, 2)
-            if arguement == 1:
-                index1 = random.randint(0, self.scene_num - 1)
-                hsi = self.HSI[:, :, :, index1]
-                shape = np.shape(hsi)
-                px = random.randint(0, shape[0] - self.size)
-                py = random.randint(0, shape[1] - self.size)
-                label = hsi[px:px + self.size:1, py:py + self.size:1, :]
-                label = torch.from_numpy(np.transpose(label, (2, 0, 1))).cuda().float()
-                label = arguement_1(label)
-            else:
-                processed_data = np.zeros((4, 128, 128, 28), dtype=np.float32)
-                sample_list = np.random.randint(0, self.scene_num, 4)
-                h, w, _ = self.HSI[:, :, :, 0].shape
-                for i in range(4):
-                    px = random.randint(0, h - self.size // 2)
-                    py = random.randint(0, w - self.size // 2)
-                    processed_data[i] = self.HSI[:, :, :, sample_list[i]][px:px + self.size // 2, py:py + self.size // 2, :]
-                label = torch.from_numpy(np.transpose(processed_data, (0, 3, 1, 2))).cuda()
-                label = arguement_2(label)
+            arg1 = random.randint(1, 2)
+            temp = torch.zeros((self.nC, self.size, self.size)).cuda()
+            for i in range(arg1):
+                arg2 = random.randint(1, 2)
+                if arg2 == 1:
+                    index1 = random.randint(0, self.scene_num - 1)
+                    hsi = self.HSI[:, :, :, index1]
+                    shape = np.shape(hsi)
+                    px = random.randint(0, shape[0] - self.size)
+                    py = random.randint(0, shape[1] - self.size)
+                    label = hsi[px:px + self.size:1, py:py + self.size:1, :]
+                    label = torch.from_numpy(np.transpose(label, (2, 0, 1))).cuda().float()
+                    label = arguement_1(label)
+                else:
+                    processed_data = np.zeros((4, 128, 128, 28))
+                    sample_list = np.random.randint(0, self.scene_num, 4)
+                    h, w, _ = self.HSI[:, :, :, 0].shape
+                    for i in range(4):
+                        px = random.randint(0, h - self.size // 2)
+                        py = random.randint(0, w - self.size // 2)
+                        processed_data[i] = self.HSI[:, :, :, sample_list[i]][px:px + self.size // 2,
+                                            py:py + self.size // 2, :]
+                    label = torch.from_numpy(np.transpose(processed_data, (0, 3, 1, 2))).cuda()
+                    label = arguement_2(label)
+                if arg1 == 1:
+                    temp = label
+                else:
+                    temp = temp + label / 2
+            label = temp
             mask = self.mask
             mask = torch.from_numpy(np.transpose(mask, (2, 0, 1))).cuda().float()
 

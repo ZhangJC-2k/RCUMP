@@ -9,6 +9,22 @@ import math
 import random
 import pandas as pd
 
+
+def shift_back(x, len_shift=2, bands=28):
+    _, _, row, _ = x.shape
+    for i in range(bands):
+        x[:, i, :, :] = torch.roll(x[:, i, :, :], shifts=(-1) * len_shift * i, dims=2)
+    return x[:, :, :, :row]
+
+
+def shift_4(f, len_shift=0):
+    [bs, nC, row, col] = f.shape
+    shift_f = torch.zeros(bs, nC, row, col + (nC - 1) * len_shift).cuda().float()
+    for c in range(nC):
+        shift_f[:, c, :, c * len_shift:c * len_shift + col] = f[:, c, :, :]
+    return shift_f
+
+
 def shift_3(f, len_shift=0):
     [nC, row, col] = f.shape
     shift_f = torch.zeros(nC, row, col + (nC - 1) * len_shift).cuda()
