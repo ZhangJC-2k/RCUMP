@@ -1,3 +1,10 @@
+<div align="center">
+
+# RCUMP: Residual Completion Unrolling with Mixed Priors for Snapshot Compressive Imaging
+Yin-Ping Zhao, Jiancheng Zhang, Yongyong Chen, Zhen Wang, Xuelong Li
+</div>
+
+
 This is a repo for our work: "**[RCUMP: Residual Completion Unrolling with Mixed Priors for Snapshot Compressive Imaging](https://ieeexplore.ieee.org/abstract/document/10471309)**"
 
 ### News
